@@ -1,0 +1,19 @@
+version: "3"
+services:
+
+  boot-app:
+    image: sha256:8066c809403627f498a9054402651d44d19e8f915acf5461fa945198754e8da4
+    ports:
+      - "2020:2020"
+    depends_on:
+      - mysql-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+
+  mysql-db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=batch47
+    ports:
+      - "3306:3306"
